@@ -8,3 +8,13 @@
 ul {
   list-style: none;
 }
+
+#pdf-viewer {
+  height: 150vh;
+  width: 60vw;
+}
+
+#display-resume {
+  display: flex;
+  flex-direction: column;
+}

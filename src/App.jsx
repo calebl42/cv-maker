@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import DisplayResume from './displayResume.jsx'
 
 let nextId = 0;
 function genId() {
@@ -262,14 +263,6 @@ function ResumeInput({ resume, setResume, toggleDisplayMode }) {
   )
 }
 
-function DisplayResume() {
-  return (
-    <> 
-
-    </>
-  )
-}
-
 function App() {
   const [ displayMode, setDisplayMode ] = useState('editResume')
   let initResume = {
@@ -306,7 +299,7 @@ function App() {
     <>
       <h1>CV Maker</h1>
       {displayMode === 'editResume' && <ResumeInput resume={resume} setResume={setResume} toggleDisplayMode={toggleDisplayMode} />}
-      {displayMode === 'showResume' && <DisplayResume resume={resume} setResume={setResume} toggleDisplayMode={toggleDisplayMode} />}
+      {displayMode === 'showResume' && <DisplayResume resume={resume} setResume={setResume} toggleDisplayMode={toggleDisplayMode} id='display-resume' />}
     </>
   )
 }
