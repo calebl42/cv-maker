@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Document, Page, Text, PDFDownloadLink, PDFViewer, StyleSheet, View, Font } from '@react-pdf/renderer'
 
 Font.register({ family: 'Roboto', src: 'http://fonts.gstatic.com/s/roboto/v16/zN7GBFwfMP4uA6AR0HCoLQ.ttf' });
@@ -65,6 +66,12 @@ function ResumePDF({ resume }) {
 }
 
 function DisplayResume({resume, setResume, toggleDisplayMode}) {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <div id='display-resume'>
       <div id='display-buttons'>
