@@ -1,6 +1,6 @@
 # CV Maker
 
-This is a website for building your own CV/Resume.
+A website for building your own CV/Resume
 - Made with React (and React-pdf)
 - Deployed with Vercel
 
