@@ -7,41 +7,60 @@ function genId() {
   return nextId++;
 }
 
+let initResume = {
+  fname: 'Pumpkin',
+  lname: 'Lee',
+  email: 'pumpkin@gmail.com',
+  phoneNumber: '777-7777',
+  education: [{
+    schoolName: 'University of Hamsterdam', 
+    degreeName: 'Bachelor of Science, Zoology', 
+    startDate: '2022-01-12',
+    endDate: '2023-06-09', 
+    id: genId(),
+  }],
+  experience: [{
+    companyName: 'petsmart', 
+    jobTitle: 'hamster', 
+    jobDescription: '- i ate apple\n- i ran on the wheel', 
+    startDate: '2023-09-21',
+    endDate: '2025-02-13', 
+    id: genId(),
+  }]
+}
+
 function BasicInfo({resume, handleInput}) {
   return (
-    <>
-      <h3>Basic Info</h3>
+    <><h3>Basic Info</h3><div id='basic-info'>
       <label>
-        First Name: 
-        <input 
-          type='text' 
-          value={resume.fname} 
-          onChange={
-            (e) => handleInput({...resume, fname: e.target.value})
-          }
-        />
+        First Name:
+        <input
+          type='text'
+          value={resume.fname}
+          onChange={(e) => handleInput({ ...resume, fname: e.target.value })} />
       </label>
       <label>
-        Last Name: 
-        <input 
-          type='text' 
-          value={resume.lname} 
-          onChange={
-            (e) => handleInput({...resume, lname: e.target.value})
-          }
-        />
+        Last Name:
+        <input
+          type='text'
+          value={resume.lname}
+          onChange={(e) => handleInput({ ...resume, lname: e.target.value })} />
       </label>
       <label>
-        Email: 
-        <input 
-          type='email' 
-          value={resume.email} 
-          onChange={
-            (e) => handleInput({...resume, email: e.target.value})
-          }
-        />
+        Email:
+        <input
+          type='email'
+          value={resume.email}
+          onChange={(e) => handleInput({ ...resume, email: e.target.value })} />
       </label>
-    </>
+      <label>
+        Phone Number:
+        <input
+          type='tel'
+          value={resume.phoneNumber}
+          onChange={(e) => handleInput({ ...resume, phoneNumber: e.target.value })} />
+      </label>
+    </div></>
   )
 }
 
@@ -122,7 +141,7 @@ function Experience({resume, handleInput, curId}) {
   return (
     <>
       <label>
-        Company Name:
+        Company Name: 
         <input 
           type='text' 
           value={curExp.companyName} 
@@ -154,7 +173,7 @@ function Experience({resume, handleInput, curId}) {
         />
       </label>
       <label>
-        Job Description
+        Job Description:
         <textarea 
           value={curExp.jobDescription} 
           onChange={
@@ -207,7 +226,6 @@ function Experience({resume, handleInput, curId}) {
 function ResumeInput({ resume, setResume, toggleDisplayMode }) {
   function handleSubmit(event) {
     event.preventDefault()
-    console.log(resume)
     toggleDisplayMode()
   }
 
@@ -237,10 +255,15 @@ function ResumeInput({ resume, setResume, toggleDisplayMode }) {
       })
     })
   }
+
+  function resetResume() {
+    setResume(initResume)
+  }
   
   return (
     <>
       <h2>Enter your information below</h2>
+      <hr />
       <form onSubmit={handleSubmit}>
         <BasicInfo resume={resume} handleInput={setResume}/>
         <hr />
@@ -248,16 +271,18 @@ function ResumeInput({ resume, setResume, toggleDisplayMode }) {
         <ul>
           {resume.education.map(edu => <li key={edu.id}><Education resume={resume} handleInput={setResume} curId={edu.id} /></li>)}
         </ul>
-        <button onClick={addEducation}>add another education</button>
+        <button type='button' onClick={addEducation}>add another education</button>
         <hr />
         <h3>Experience</h3>
         <ul>
           {resume.experience.map(exp => <li key={exp.id}><Experience resume={resume} handleInput={setResume} curId={exp.id} /></li>)}
         </ul>
-        <button onClick={addExperience}>add another experience</button>
+        <button type='button' onClick={addExperience}>add another experience</button>
         <hr />
-        <button type='submit'>Submit</button>
-        <button>Clear</button>
+        <div id='bottom-buttons'>
+          <button type='submit' id='submit-button'>submit</button>
+          <button onClick={resetResume} type='button' id='reset-button'>reset</button>
+        </div>
       </form>
     </>
   )
@@ -265,26 +290,6 @@ function ResumeInput({ resume, setResume, toggleDisplayMode }) {
 
 function App() {
   const [ displayMode, setDisplayMode ] = useState('editResume')
-  let initResume = {
-    fname: '',
-    lname: '',
-    email: '',
-    education: [{
-      schoolName: '', 
-      degreeName: '', 
-      startDate: '',
-      endDate: '', 
-      id: genId(),
-    }],
-    experience: [{
-      companyName: '', 
-      jobTitle: '', 
-      jobDescription: '', 
-      startDate: '',
-      endDate: '', 
-      id: genId(),
-    }]
-  }
   const [ resume, setResume ] = useState(initResume)
 
   function toggleDisplayMode() {
@@ -297,9 +302,14 @@ function App() {
 
   return (
     <>
-      <h1>CV Maker</h1>
+      <header>
+        <h1>CV Maker</h1>
+      </header>
       {displayMode === 'editResume' && <ResumeInput resume={resume} setResume={setResume} toggleDisplayMode={toggleDisplayMode} />}
       {displayMode === 'showResume' && <DisplayResume resume={resume} setResume={setResume} toggleDisplayMode={toggleDisplayMode} id='display-resume' />}
+      <footer>
+        2025 Caleb Lee
+      </footer>
     </>
   )
 }

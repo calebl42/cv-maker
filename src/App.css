@@ -18,3 +18,62 @@ ul {
   display: flex;
   flex-direction: column;
 }
+
+#display-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  padding: 30px;
+}
+
+#basic-info, li {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+#basic-info {
+  margin-left: 40px;
+}
+
+#basic-info input, li input, textarea {
+  margin-left: 10px;
+  width: 30vw;
+  padding: 5px;
+  font-size: 17px;
+}
+
+label {
+  display: flex;
+}
+
+li input[type='date'] {
+  width: 10vw;
+}
+
+#bottom-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+#submit-button {
+  background-color: darkslategray;
+}
+
+#reset-button {
+  background-color: tomato;
+}
+
+hr {
+  margin: 20px 0 20px 0;
+  width: 50vw;
+}
+
+footer {
+  margin: auto;
+  padding-top: 80px;
+  padding-bottom: 20px;
+}
