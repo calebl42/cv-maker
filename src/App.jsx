@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import DisplayResume from './displayResume.jsx'
+import DisplayResume from './DisplayResume.jsx'
 
 let nextId = 0;
 function genId() {
