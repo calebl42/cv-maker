@@ -1,7 +1,7 @@
 # CV Maker
 
 A website for building your own CV/Resume
-- Made with React (and React-pdf)
-- Deployed with Vercel
+- made with React (and React-pdf)
+- deployed with netlify
 
-### Try it out here 👉🏽 [CV Maker](https://cv-maker-lac-eight.vercel.app/)
+### Try it out here 👉🏽 [CV Maker]([https://cv-maker-lac-eight.vercel.app/](https://cv-maker-caleb.netlify.app/))
